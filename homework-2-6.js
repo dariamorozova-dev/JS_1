@@ -9,33 +9,25 @@ let lastChar = string.charAt(stringLenght - 1);
 // alert(lastChar);
 function ruble(a) {
     let rub = '';
+    let beforeLastChar = string.charAt(stringLenght - 2);
+    if (beforeLastChar == '1') {
+        rub = 'рублей';
+        return rub;
+    }
     switch(a) {
         case '1':
             rub = 'рубль';
             break;
         case '2':
-            rub = 'рубля';
-            break;
         case '3':
-            rub = 'рубля';
         case '4':
             rub = 'рубля';
             break;
         case '5':
-            rub = 'рублей';
-            break;
         case '6':
-            rub = 'рублей';
-            break;
         case '7':
-            rub = 'рублей';
-            break;
         case '8':
-            rub = 'рублей';
-            break;
         case '9':
-            rub = 'рублей';
-            break;
         case '0':
             rub = 'рублей';
             break;

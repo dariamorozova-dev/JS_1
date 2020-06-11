@@ -38,43 +38,37 @@ alert('Частное чисел равно: ' + div(a, b));
 
 function mathOperation (arg1, arg2, operation) {
     let d = 0;
-    switch (c) {
+    switch (operation) {
         case 'сложение':
-            d = sum(a,b);
-            break;
         case 'сложить':
+        case '+':
             d = sum(a,b);
             break;
         case 'вычитание':
-            d = diff(a, b);
-            break;
         case 'вычесть':
+        case '-':
             d = diff(a, b);
-            break;
+            break; 
         case 'делить':
-            d = div(a, b);
-            break;
         case 'поделить':
-            d = div(a, b);
-            break;
         case 'разделить':
+        case '/':
             d = div(a, b);
             break;
         case 'умножить':
-            d = multiply(a, b);
-            break;
         case 'перемножить':
-            d = multiply(a, b);
-            break;
         case 'умножение':
+        case '*':
             d = multiply(a, b);
             break;
+        default:
+            throw new Error ('Операцию ' + с + 'выполнить невозможно');
     }
     return d;
 }
 
-a = Number(prompt('Введите первое число: '));
-b = Number(prompt('Введите второе число: '));
-let c = prompt('Какую операцию вы хотите совершить: ');
+let arg1 = Number(prompt('Введите первое число: '));
+let arg2 = Number(prompt('Введите второе число: '));
+let operation = prompt('Какую операцию вы хотите совершить: ');
 
-alert('Результат операции "' + c + '" равен: ' + mathOperation(a, b, c));
+alert('Результат операции "' + operation + '" равен: ' + mathOperation(arg1, arg2, operation));
