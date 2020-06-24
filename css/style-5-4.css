@@ -1,0 +1,30 @@
+
+body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+img {
+    margin: 30px auto;
+    display: block;
+}
+
+.product {
+    margin: 50px;
+    max-width: 150px;
+    text-align: center;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    width: 120px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.desc {
+    margin: 33px auto;
+}
