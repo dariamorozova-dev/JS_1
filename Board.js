@@ -2,17 +2,13 @@ class Board {
     constructor() {
         this.tableEl = document.querySelector('#boardEl');
         this.body = document.querySelector('body');
-        this.cellsObj = {};
         this.config = new Config();
-        // this.config = CONFIG;
         this.rezult = [
             ['', '', ''],
             ['', '', ''],
             ['', '', '']
         ];
         this.stepOF = 'X';
-        // this.usedCellRow = '';
-        // this.usedCellCol = '';
     }
 
     init() {
@@ -27,8 +23,8 @@ class Board {
             this.tableEl.appendChild(tr);
             for (let col = 0; col < this.config.getColsCount(); col++) {
                 const td = document.createElement('td');
-                td.dataset.row = row.toString();
-                td.dataset.col = col.toString();
+                td.dataset.row = row;
+                td.dataset.col = col;
                 tr.appendChild(td);
             }
         }
@@ -57,23 +53,18 @@ class Board {
     }
 
     addEventListenersOnCell() {
-         let tableCells = document.querySelectorAll('td');
+        let tableCells = document.querySelectorAll('td');
         for (let i = 0; i < tableCells.length; i++) {
             tableCells[i].addEventListener('click', this.putSimbolInCell);
-            this.putCellInCellsObj(tableCells[i]);
         }
-    }
-
-    putCellInCellsObj(cell) {
-        this.cellsObj[`x${cell.dataset.row}_y${cell.dataset.col}`] = cell;
     }
 
     putSimbolInCell() {
         let x = event.target.dataset.row;
         let y = event.target.dataset.col;
-        let currCell = board.cellsObj[`x${x}_y${y}`];
-        if (currCell.innerText === '') {
-            currCell.innerText = board.stepOF;
+        
+        if (this.innerText === '') {
+            this.innerText = board.stepOF;
             board.putSimbolInRezultArr(x, y);
             board.checkVictory();
             board.changeSimbol();
@@ -97,7 +88,7 @@ class Board {
             board.rezult[0][2] === 'X' && board.rezult[1][2] === 'X' && board.rezult[2][2] === 'X' ||
             board.rezult[0][0] === 'X' && board.rezult[1][1] === 'X' && board.rezult[2][2] === 'X' ||
             board.rezult[0][2] === 'X' && board.rezult[1][1] === 'X' && board.rezult[2][0] === 'X') {
-                this.createWinMessage();
+            this.createWinMessage();
         } else if (board.rezult[0][0] === 'O' && board.rezult[0][1] === 'O' && board.rezult[0][2] === 'O' ||
             board.rezult[1][0] === 'O' && board.rezult[1][1] === 'O' && board.rezult[1][2] === 'O' ||
             board.rezult[2][0] === 'O' && board.rezult[2][1] === 'O' && board.rezult[2][2] === 'O' ||
@@ -106,13 +97,13 @@ class Board {
             board.rezult[0][2] === 'O' && board.rezult[1][2] === 'O' && board.rezult[2][2] === 'O' ||
             board.rezult[0][0] === 'O' && board.rezult[1][1] === 'O' && board.rezult[2][2] === 'O' ||
             board.rezult[0][2] === 'O' && board.rezult[1][1] === 'O' && board.rezult[2][0] === 'O') {
-                this.createWinMessage();
-            } else if (!board.rezult.some((element) => {
-                let emptyStr = '';
-                return element.includes(emptyStr);
-            })) {
-                this.createLooseMesage();
-            }
+            this.createWinMessage();
+        } else if (!board.rezult.some((element) => {
+            let emptyStr = '';
+            return element.includes(emptyStr);
+        })) {
+            this.createLooseMesage();
+        }
     }
 
     createWinMessage() {

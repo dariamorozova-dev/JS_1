@@ -4,10 +4,6 @@ class Config {
         this.rowCount = settings.rowCount;
         this.colCount = settings.colCount;
     }
-    
-    // init(settings) {
-    //     this.settings = settings;
-    // }
 
     getRowsCount() {
         return this.rowCount;
