@@ -11,8 +11,8 @@ class Board {
             ['', '', '']
         ];
         this.stepOF = 'X';
-        this.usedCellRow = '';
-        this.usedCellCol = '';
+        // this.usedCellRow = '';
+        // this.usedCellCol = '';
     }
 
     init() {
@@ -57,10 +57,10 @@ class Board {
     }
 
     addEventListenersOnCell() {
-        this.tableCells = document.querySelectorAll('td');
-        for (let i = 0; i < this.tableCells.length; i++) {
-            this.tableCells[i].addEventListener('click', this.putSimbolInCell);
-            this.putCellInCellsObj(this.tableCells[i]);
+         let tableCells = document.querySelectorAll('td');
+        for (let i = 0; i < tableCells.length; i++) {
+            tableCells[i].addEventListener('click', this.putSimbolInCell);
+            this.putCellInCellsObj(tableCells[i]);
         }
     }
 
@@ -107,6 +107,11 @@ class Board {
             board.rezult[0][0] === 'O' && board.rezult[1][1] === 'O' && board.rezult[2][2] === 'O' ||
             board.rezult[0][2] === 'O' && board.rezult[1][1] === 'O' && board.rezult[2][0] === 'O') {
                 this.createWinMessage();
+            } else if (!board.rezult.some((element) => {
+                let emptyStr = '';
+                return element.includes(emptyStr);
+            })) {
+                this.createLooseMesage();
             }
     }
 
@@ -119,5 +124,10 @@ class Board {
         this.tableEl.insertAdjacentHTML('afterend', '<button>Начать игру заново</button>');
         let button = document.querySelector('button');
         button.addEventListener('click', board.init.bind(board));
+    }
+
+    createLooseMesage() {
+        this.body.insertAdjacentHTML('afterbegin', `<div>GAME OVER! NO ONE WON!</div>`);
+        this.createBtnReplay();
     }
 }
