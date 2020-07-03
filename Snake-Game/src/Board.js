@@ -67,11 +67,15 @@ class Board {
     }
 
     isHeadOnFood() {
-        return this.boardEl.querySelector('.food').classList.contains('snakeBody');
+        if (!this.isNextStepToWall(this.snake.body[0])) {
+            return this.boardEl.querySelector('.food').classList.contains('snakeBody');
+        }
     }
 
     isHeadOnSnake(nextCellCoords) {
-        let nextCell = this.getCellEl(nextCellCoords.x, nextCellCoords.y);
-        return nextCell.classList.contains('snakeBody');
+        if (!this.isNextStepToWall(this.snake.body[0])) {
+            let nextCell = this.getCellEl(nextCellCoords.x, nextCellCoords.y);
+            return nextCell.classList.contains('snakeBody');
+        }
     }
 }

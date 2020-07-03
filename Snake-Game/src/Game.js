@@ -72,11 +72,11 @@ class Game {
     }
 
     isGameLost() {
-        if (this.board.isNextStepToWall(this.snake.body[0])) {
-            clearInterval(this.tickIdentifier);
-            this.setMessage('Вы проиграли');
-            return true;
-        }
+        // if (this.board.isNextStepToWall(this.snake.body[0])) {
+        //     clearInterval(this.tickIdentifier);
+        //     this.setMessage('Вы проиграли');
+        //     return true;
+        // }
         if (this.board.isHeadOnSnake(this.snake.body[0])) {
             clearInterval(this.tickIdentifier);
             this.setMessage('Вы проиграли');
