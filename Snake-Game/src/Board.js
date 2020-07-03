@@ -69,4 +69,9 @@ class Board {
     isHeadOnFood() {
         return this.boardEl.querySelector('.food').classList.contains('snakeBody');
     }
+
+    isHeadOnSnake(nextCellCoords) {
+        let nextCell = this.getCellEl(nextCellCoords.x, nextCellCoords.y);
+            return nextCell.classList.contains('snakeBody');
+        }
 }

@@ -72,6 +72,11 @@ class Game {
             this.setMessage('Вы проиграли');
             return true;
         }
+        if (this.board.isHeadOnSnake(this.snake.body[0])) {
+            clearInterval(this.tickIdentifier);
+            this.setMessage('Вы проиграли');
+            return true;
+        }
         return false;
     }
 
