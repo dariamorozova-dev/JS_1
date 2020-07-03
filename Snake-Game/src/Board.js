@@ -72,6 +72,6 @@ class Board {
 
     isHeadOnSnake(nextCellCoords) {
         let nextCell = this.getCellEl(nextCellCoords.x, nextCellCoords.y);
-            return nextCell.classList.contains('snakeBody');
-        }
+        return nextCell.classList.contains('snakeBody');
+    }
 }

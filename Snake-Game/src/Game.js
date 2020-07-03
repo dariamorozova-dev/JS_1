@@ -2,6 +2,9 @@ class Game {
     constructor() {
         this.tickIdentifier = null;
         this.messageEl = document.getElementById('message');
+        this.messageCountEl = document.getElementById('messageCount');
+        this.pointsCount = 0;
+        this.messageCountEl.innerText = (`Ваш счёт: ${this.pointsCount}`);
     }
 
     init(settings, status, board, snake, menu, food) {
@@ -41,6 +44,8 @@ class Game {
             return;
         }
         if (this.board.isHeadOnFood()) {
+            // увеличить счетчик баллов
+            this.addPoints();
             this.snake.increaseBody();
             this.food.setNewFood();
         }
@@ -91,5 +96,10 @@ class Game {
             return true;
         }
         return false;
+    }
+
+    addPoints() {
+        this.pointsCount++; 
+        this.messageCountEl.innerText = (`Ваш счёт: ${this.pointsCount}`);       
     }
 }
