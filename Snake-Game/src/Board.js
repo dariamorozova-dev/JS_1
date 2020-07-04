@@ -59,23 +59,20 @@ class Board {
     }
 
     isNextStepToWall(nextCellCoords) {
-        //использовать как заготовку для "прозрачных стен"
-        //там, где получается нулевая координата задать коорд со значением длины строки или столба
-
         let nextCell = this.getCellEl(nextCellCoords.x, nextCellCoords.y);
         return nextCell === null;
     }
 
     isHeadOnFood() {
-        if (!this.isNextStepToWall(this.snake.body[0])) {
+        // if (!this.isNextStepToWall(this.snake.body[0])) {
             return this.boardEl.querySelector('.food').classList.contains('snakeBody');
-        }
+        // }
     }
 
     isHeadOnSnake(nextCellCoords) {
-        if (!this.isNextStepToWall(this.snake.body[0])) {
+        // if (!this.isNextStepToWall(this.snake.body[0])) {
             let nextCell = this.getCellEl(nextCellCoords.x, nextCellCoords.y);
             return nextCell.classList.contains('snakeBody');
-        }
+        // }
     }
 }
