@@ -1,32 +1,49 @@
+function createElement(tag, props, ...children) {
+    const element = document.createElement(tag);
+    Object.keys(props).forEach(key => element[key] = props[key]);
+
+    if (children.length > 0) {
+        children.forEach(child => {
+            if (typeof child === 'string') {
+                child = document.createTextNode(child);
+            }
+
+            element.appendChild(child);
+        })
+    }
+
+    return element;
+}
+
 function createTodoItem(title) {
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.className = 'checkbox';
+    const checkbox = createElement('input', {type: 'checkbox', className: 'checkbox'});
+    // checkbox.type = 'checkbox';
+    // checkbox.className = 'checkbox';
 
-    const label = document.createElement('label');
-    label.innerText = title;
-    label.className = 'title';
+    const label = createElement('label', {className: 'title'}, title);
+    // label.innerText = title;
+    // label.className = 'title';
 
-    const editInput = document.createElement('input');
-    editInput.type = 'text';
-    editInput.className = 'textfield';
+    const editInput = createElement('input', {type: 'text', className: 'textfield'});
+    // editInput.type = 'text';
+    // editInput.className = 'textfield';
 
-    const editButton = document.createElement('button');
-    editButton.innerText = 'Edit';
-    editButton.className = 'edit';
+    const editButton = createElement('button', {className: 'edit'}, 'EDIT');
+    // editButton.innerText = 'Edit';
+    // editButton.className = 'edit';
 
-    const deleteButton = document.createElement('button');
-    deleteButton.innerText = 'Delete';
-    deleteButton.className = 'delete';
+    const deleteButton = createElement('button', {className: 'delete'}, 'DELETE');
+    // deleteButton.innerText = 'Delete';
+    // deleteButton.className = 'delete';
 
-    const listItem = document.createElement('li');
-    listItem.className = 'todo-item';
+    const listItem = createElement('li', {className: 'todo-item'}, checkbox, label, editInput, editButton, deleteButton);
+    // listItem.className = 'todo-item';
 
-    listItem.appendChild(checkbox);
-    listItem.appendChild(label);
-    listItem.appendChild(editInput);
-    listItem.appendChild(editButton);
-    listItem.appendChild(deleteButton);
+    // listItem.appendChild(checkbox);
+    // listItem.appendChild(label);
+    // listItem.appendChild(editInput);
+    // listItem.appendChild(editButton);
+    // listItem.appendChild(deleteButton);
     
     bindEvents(listItem);
 
