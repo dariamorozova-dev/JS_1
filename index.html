@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS_1</title>
+    <link rel="stylesheet" href="style.css">
+    <title>TODO-List</title>
 </head>
 <body>
-    
+    <main id="app">
+        <header><span>TODO</span></header>
+
+        <ul id="todo-list">
+            <li class="todo-item">
+                <input class="checkbox" type="checkbox">
+                <label class="title">ZADACHA-1</label>
+                <input type="text" class="textfield">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+            </li>
+        </ul>
+
+        <form id="todo-form">
+            <input type="text" id="add-input">
+            <button type="submit" id="add-button">Add</button></form>
+    </main>
+
+    <script src="app.js"></script>
 </body>
 </html>
