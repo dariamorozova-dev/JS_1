@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
     board.init(settings, snake);
     food.init(settings, snake, board);
     game.init(settings, status, board, snake, menu, food);
-    snake.init(board);
+    snake.init(board, settings);
 
     board.renderBoard();
     board.renderSnake();

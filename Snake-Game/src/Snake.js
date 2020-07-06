@@ -10,8 +10,9 @@ class Snake {
         this.direction = 'down';
     }
 
-    init(board) {
+    init(board, settings) {
         this.board = board;
+        this.settings = settings;
     }
 
     performStep() {
@@ -20,22 +21,20 @@ class Snake {
             x: currentHeadCoords.x,
             y: currentHeadCoords.y,
         };
-        if (this.board.isNextStepToWall(this.body[0])) {
-            switch (this.direction) {
-                case 'down':
-                    newHeadCoords.y = 0;
-                    break;
-                case 'up':
-                    newHeadCoords.y = 22;
-                    break;
-                case 'left':
-                    newHeadCoords.x = 22;
-                    break;
-                case 'right':
-                    newHeadCoords.x = 0;
-                    break;
-            }
+
+        if (newHeadCoords.x > this.settings.colsCount) {
+            newHeadCoords.x = 1;
         }
+        if (newHeadCoords.y > this.settings.rowsCount) {
+            newHeadCoords.y = 1;
+        }
+        if (newHeadCoords.x == 0) {
+            newHeadCoords.x = this.settings.colsCount;
+        }
+        if (newHeadCoords.y == 0) {
+            newHeadCoords.y = this.settings.rowsCount;
+        }
+
         switch (this.direction) {
             case 'down':
                 newHeadCoords.y++;
